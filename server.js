@@ -1,22 +1,20 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const mongoose = require('mongoose');
-
-const app = express();
-
-const PORT = 4000;
-const mongoURI = 'mongodb://localhost:27017/TaskManager';
-
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
-const connection = mongoose.connection;
-
-connection.once('open', () => {
-    console.log("MongoDB database connection established successfully");
-});
-
-app.use(cors());
-app.use(bodyParser.json());
-
-app.listen(PORT, () => {
-    console.log(`Server is running on Port: ${PORT}`);
+// The server.js file is the main file of your Node.js application 
+// It will load the express.js file as a module to bootstrap your Express application
+//
+//The process.env.NODE_ENV variable is set to the default 'development‘
+//value if itdoesn 't exist.
+// Set the 'NODE_ENV' variable
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+// Load the module dependencies
+var mongoose = require('./config/mongoose'),
+    express = require('./config/express');
+// Create a new Mongoose connection instance
+var db = mongoose().catch(err => console.error(err));;
+// Create a new Express application instance
+var app = express();
+// Use the Express application instance to listen to the '3000' port
+app.listen(3000);
+// Use the module.exports property to expose our Express application instance for external usage
+module.exports = app; //returns the application object
+// Log the server status to the console
+console.log('Server running at http://localhost:3000/');
