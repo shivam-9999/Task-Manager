@@ -20,4 +20,3 @@ var TaskSchema = new Schema({
 });
 // Create the 'Task' model out of the 'TaskSchema'
 mongoose.model('Task', TaskSchema);
-

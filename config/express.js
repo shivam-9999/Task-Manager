@@ -2,7 +2,7 @@
 //
 // Load the module dependencies
 const config = require('./config'),
-    express = require('express')
+    express = require('express'),
     morgan = require('morgan'),
     compress = require('compression'),
     bodyParser = require('body-parser'),
@@ -47,12 +47,10 @@ module.exports = function () {
     //bootstrap the app using the controller and routing modules
     // Load the routing files
     require('../app/routes/tasks.server.routes.js')(app);
-
-    
-    
     //The express.static() middleware takes one argument 
     //to determine the location of the static folder
     //Configure static file serving
     app.use(express.static('./public'));
     return app;
 };
+

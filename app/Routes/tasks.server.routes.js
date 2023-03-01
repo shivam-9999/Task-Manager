@@ -1,7 +1,7 @@
 //Load the index controller
-const index = require('../../app/Controllers/index.server.controller');
+const index = require('../../app/controllers/index.server.controller');
 // Load the 'tasks' controller
-const tasks = require('../../app/Controllers/tasks.server.controller');
+const tasks = require('../../app/controllers/tasks.server.controller');
 
 // Define the routes module' method
 module.exports = function (app) {
@@ -14,7 +14,7 @@ module.exports = function (app) {
     app.route('/tasks').post(tasks.createTask);
     
     // a get request to /tasks will execute list method in tasks.server.controller
-    app.get("/tasks",tasks.list); //go to http://localhost:3000/taskss to see the list
+    app.get("/tasks",tasks.list); //go to http://localhost:3001/taskss to see the list
     //
     // Set up the 'taskss' parameterized routes 
     app.route('/tasks/:taskId')
