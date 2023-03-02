@@ -1,6 +1,6 @@
 // Load the 'Task' Mongoose model
-var Task = require('mongoose').model('Task');
-//
+var studentModel = require('mongoose').model('student');
+
 // Create a new error handling controller method
 const getErrorMessage = function(err) {
     // Define the error message variable
@@ -29,32 +29,32 @@ const getErrorMessage = function(err) {
     return message;
 };
 // Create a new task
-exports.createTask = function (req, res, next) {
+exports.createStudent = function (req, res, next) {
     // Create a new instance of the 'Task' Mongoose model
-    var task = new Task(req.body); //get data from React form
-    console.log("body: " + req.body.taskName);
+    var student = new studentModel(req.body); //get data from React form
+    console.log("body: " + req.body.studentNumber);
 
-    // Use the 'Task' instance's 'save' method to save a new task document
-    task.save(function (err) {
+    // Use the 'student' instance's 'save' method to save a new student document
+    student.save(function (err) {
         if (err) {
             // Call the next middleware with an error message
             return next(err);
         } else {
             // Use the 'response' object to send a JSON response
-            res.json(task);
+            res.json(student);
             
         }
     });
 };
 //
-// Returns all tasks
+// Returns all studentModel
 exports.list = function (req, res, next) {
-    // Use the 'Task' static's 'find' method to retrieve a new task document
-    Task.find({}, function (err, tasks) {
+    // Use the 'studentModel' static's 'find' method to retrieve a new task document
+    studentModel.find({}, function (err, students) {
         if (err) {
             return next(err);
         } else {
-            res.json(tasks);
+            res.json(students);
         }
     });
 };
@@ -65,40 +65,40 @@ exports.read = function(req, res) {
     res.json(req.task);
 };
 //
-// 'taskByID' controller method to find a task by its id
-exports.taskByID = function (req, res, next, id) {
+// 'studentById' controller method to find a task by its id
+exports.studentById = function (req, res, next, id) {
     // Use the 'Task' static 'findOne' method to retrieve a specific a task
-    Task.findOne({
+    studentModel.findOne({
         _id: id
-    }, (err, task) => {
+    }, (err, student) => {
         if (err) {
             // Call the next middleware with an error message
             return next(err);
         } else {
-            // Set the 'req.task' property
-            req.task = task;
-            console.log(task);
+            // Set the 'req.student' property
+            req.student = student;
+            console.log(student);
             // Call the next middleware
             next();
         }
     });
 };
-//update a task by id
+//update a student by id
 exports.update = function(req, res, next) {
     console.log(req.body);
-    Task.findByIdAndUpdate(req.task.id, req.body, function (err, task) {
+    studentModel.findByIdAndUpdate(req.student.id, req.body, function (err, student) {
       if (err) {
         console.log(err);
         return next(err);
       }
-      res.json(task);
+      res.json(student);
     });
 };
-// delete a task by id
+// delete a student by id
 exports.delete = function(req, res, next) {
-    console.log('in delete:',req.task.id, req.body)
-    Task.findByIdAndRemove(req.task.id, req.body, function (err, task) {
+    console.log('in delete:',req.student.id, req.body)
+    studentModel.findByIdAndRemove(req.student.id, req.body, function (err, student) {
       if (err) return next(err);
-      res.json(task);
+      res.json(student);
     });
 };

@@ -16,7 +16,7 @@ function CreateTask(props) {
   const [task, setTask] = useState({ _id: '', taskId: '', taskName: '', taskDescription: '', 
                 startDate: date, endDate: date, owner: '' });
   const [showLoading, setShowLoading] = useState(false);
-  const apiUrl = "http://localhost:3000/tasks";
+  const apiUrl = "http://localhost:3000/task";
     //
   const saveTask = (e) => {
     setShowLoading(true);
@@ -29,7 +29,7 @@ function CreateTask(props) {
       axios.post(apiUrl, data)
       .then((result) => {
         setShowLoading(false);
-        navigate('/list')
+        navigate('/studentsList')
       }).catch((error) => setShowLoading(false));
   };
   // handles onChange event

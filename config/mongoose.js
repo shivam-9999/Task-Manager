@@ -15,8 +15,8 @@ module.exports =  () => {
     });
 
     // Load the 'Task' model 
-    require('../app/models/task.server.model');
-    
+    require('../app/Models/student.server.model');
+    require('../app/Models/course.server.model');
     // Return the Mongoose connection instance
     return mongoose.connection;
 };
