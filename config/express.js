@@ -50,6 +50,8 @@ module.exports = function () {
   app.engine("html", require("ejs").renderFile);
   //bootstrap the app using the controller and routing modules
   // Load the routing files
+  require("../app/routes/register.server.routes.js")(app);
+  require("../app/routes/login.server.routes.js")(app);
   require("../app/routes/students.server.routes.js")(app);
   require("../app/routes/courses.server.route.js")(app);
 
