@@ -7,6 +7,7 @@ import Spinner from "react-bootstrap/Spinner";
 import "./login.css";
 //
 import { useNavigate } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 function CourseList() {
   let navigate = useNavigate();
@@ -68,81 +69,83 @@ function CourseList() {
 
   //
   return (
-    <div>
-      {showLoading && (
-        <Spinner animation="border" role="status">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      )}
+    <Container>
+      <div>
+        {showLoading && (
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        )}
 
-      <h2>See all your tasks here:</h2>
-      <ListGroup>
-        <Table>
-          <tbody>
-            {data.map((item, idx) => (
-              <tr key={idx}>
-                <td>{idx + 1}</td>
-                <td>
-                  <ListGroup.Item
-                    key={idx}
-                    action
-                    onClick={() => {
-                      showDetail(item._id);
-                    }}
-                  >
-                    {item.courseCode}{" "}
-                  </ListGroup.Item>
-                </td>
-                <td>
-                  <ListGroup.Item
-                    key={idx}
-                    action
-                    onClick={() => {
-                      showDetail(item._id);
-                    }}
-                  >
-                    {item.courseName}{" "}
-                  </ListGroup.Item>
-                </td>
-                <td>
-                  <ListGroup.Item
-                    key={idx}
-                    action
-                    onClick={() => {
-                      showDetail(item._id);
-                    }}
-                  >
-                    {item.section}{" "}
-                  </ListGroup.Item>
-                </td>
-                <td>
-                  <ListGroup.Item
-                    key={idx}
-                    action
-                    onClick={() => {
-                      showDetail(item._id);
-                    }}
-                  >
-                    {item.semester}{" "}
-                  </ListGroup.Item>
-                </td>
-                <td>
-                  <Button
-                    type="button"
-                    variant="danger"
-                    onClick={() => {
-                      deleteTask(item);
-                    }}
-                  >
-                    Delete
-                  </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </ListGroup>
-    </div>
+        <h2>See all your tasks here:</h2>
+        <ListGroup>
+          <Table>
+            <tbody>
+              {data.map((item, idx) => (
+                <tr key={idx}>
+                  <td>{idx + 1}</td>
+                  <td>
+                    <ListGroup.Item
+                      key={idx}
+                      action
+                      onClick={() => {
+                        showDetail(item._id);
+                      }}
+                    >
+                      {item.courseCode}{" "}
+                    </ListGroup.Item>
+                  </td>
+                  <td>
+                    <ListGroup.Item
+                      key={idx}
+                      action
+                      onClick={() => {
+                        showDetail(item._id);
+                      }}
+                    >
+                      {item.courseName}{" "}
+                    </ListGroup.Item>
+                  </td>
+                  <td>
+                    <ListGroup.Item
+                      key={idx}
+                      action
+                      onClick={() => {
+                        showDetail(item._id);
+                      }}
+                    >
+                      {item.section}{" "}
+                    </ListGroup.Item>
+                  </td>
+                  <td>
+                    <ListGroup.Item
+                      key={idx}
+                      action
+                      onClick={() => {
+                        showDetail(item._id);
+                      }}
+                    >
+                      {item.semester}{" "}
+                    </ListGroup.Item>
+                  </td>
+                  <td>
+                    <Button
+                      type="button"
+                      variant="danger"
+                      onClick={() => {
+                        deleteTask(item);
+                      }}
+                    >
+                      Delete
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </ListGroup>
+      </div>
+    </Container>
   );
 }
 export default CourseList;

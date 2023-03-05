@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import "./login.css";
 //
 import { useNavigate } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 function CreateCourse() {
   let navigate = useNavigate();
@@ -49,66 +50,68 @@ function CreateCourse() {
   };
 
   return (
-    <div className="login">
-      {showLoading && (
-        <Spinner animation="border" role="status">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      )}
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="courseCode">
-          <Form.Label>Course Code</Form.Label>
-          <Form.Control
-            type="text"
-            name="courseCode"
-            placeholder="Enter course code"
-            value={course.courseCode}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+    <Container>
+      <div className="login">
+        {showLoading && (
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        )}
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId="courseCode">
+            <Form.Label>Course Code</Form.Label>
+            <Form.Control
+              type="text"
+              name="courseCode"
+              placeholder="Enter course code"
+              value={course.courseCode}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
 
-        <Form.Group controlId="courseName">
-          <Form.Label>Course Name</Form.Label>
-          <Form.Control
-            type="text"
-            name="courseName"
-            placeholder="Enter course name"
-            value={course.courseName}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+          <Form.Group controlId="courseName">
+            <Form.Label>Course Name</Form.Label>
+            <Form.Control
+              type="text"
+              name="courseName"
+              placeholder="Enter course name"
+              value={course.courseName}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
 
-        <Form.Group controlId="section">
-          <Form.Label>Section</Form.Label>
-          <Form.Control
-            type="text"
-            name="section"
-            placeholder="Enter section"
-            value={course.section}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+          <Form.Group controlId="section">
+            <Form.Label>Section</Form.Label>
+            <Form.Control
+              type="text"
+              name="section"
+              placeholder="Enter section"
+              value={course.section}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
 
-        <Form.Group controlId="semester">
-          <Form.Label>Semester</Form.Label>
-          <Form.Control
-            type="text"
-            name="semester"
-            placeholder="Enter semester"
-            value={course.semester}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+          <Form.Group controlId="semester">
+            <Form.Label>Semester</Form.Label>
+            <Form.Control
+              type="text"
+              name="semester"
+              placeholder="Enter semester"
+              value={course.semester}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-    </div>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
+      </div>
+    </Container>
   );
 }
 export default CreateCourse;

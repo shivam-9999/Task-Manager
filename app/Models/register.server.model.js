@@ -18,17 +18,9 @@ const registerSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    minlength: 6,
+    minlength: 8,
   },
 });
-
-// registerSchema.pre("save", async function (next) {
-//   const user = this;
-//   if (user.isModified("password")) {
-//     user.password = await bcrypt.hash(user.password, 8);
-//   }
-//   next();
-// });
 
 const register = mongoose.model("register", registerSchema);
 module.exports = register;
